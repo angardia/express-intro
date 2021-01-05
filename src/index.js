@@ -88,11 +88,11 @@ app.post("/user/:id", (req, res) => {
    const {username, password} = req.body;
     const userId = parseInt(req.params.id);
     const userToEdit = users.find(user => user.id === userId);
-    const index = users.findIndex(user => user.id === userToEdit.id);
     if (!userToEdit) {
         res.status(404).send("Error has been located between the screen and the chair");
         return;
     }
+    const index = users.findIndex(user => user.id === userToEdit.id);
     if (username.length < 3 || password.length < 6) {
         res.status(400).send("Error has been located between the screen and the chair");
         return;
@@ -164,12 +164,12 @@ app.delete("/photo/:id", (req, res) => {
 app.post("/photo/:id", (req, res) => {
     const { title, filename, type } = req.body;
      const photoId = parseInt(req.params.id);
-     const photoToEdit = photos.find(photo => photo.id === photoId);
-     const index = photos.findIndex(photo => photo.id === photoToEdit.id);
+     const photoToEdit = photos.find(photo => photo.id === photoId);  
      if (!photoToEdit) {
          res.status(404).send("Error has been located between the screen and the chair");
          return;
      }
+     const index = photos.findIndex(photo => photo.id === photoToEdit.id);
      if (title.length < 3 || filename.length < 6 ||  !["jpg","png","jpeg","gif","bmp"].includes(type) ) {
          res.status(400).send("Error has been located between the screen and the chair");
          return;
